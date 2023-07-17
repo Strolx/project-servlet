@@ -1,5 +1,6 @@
 package com.tictactoe;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,4 +15,9 @@ public class RestartServer extends HttpServlet {
         resp.sendRedirect("/start");
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().invalidate();
+        resp.sendRedirect("/start");
+    }
 }
